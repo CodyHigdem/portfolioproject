@@ -1,25 +1,6 @@
-body,button, input, select, textarea {
-font-family: 'Press Start 2P', cursive; font-size: 500%; color: yellow;
-  }
-
-
 a { color: #12C; }
 a:visited { color: #61C; }
 a:focus { outline: thin dotted; }
 a:hover, a:active { color: #c00; outline: 0; }
 
-b, strong { font-weight: bold; }
 pre, code { font-family: monospace, monospace; font-size: 1em; }
-ul, ol { margin: 1em 0; padding: 0 0 0 20px; }
-img { border: 0; max-width: 100%; }
-
-
-li img { float:left; padding-right: 1em; }
-li p { font-size: 0.9em; font-style: italic; }
-
-footer {
-  max-width: 45em; margin: 0 auto;
-  padding: 0 0.5em;
-  border-top: 1px solid #ccc;
-}
-footer span { float: right; font-style: italic; }
