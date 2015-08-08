@@ -17,7 +17,11 @@ Because of how everything seemed to be working utilizing .htaccess (file include
 
 (Analysis of Demo page)[https://developers.google.com/speed/pagespeed/insights/?url=http%3A%2F%2Fqtheninja.github.io%2Fportfolioproject%2F]
 
-### Pizza FPS
+### Pizza SITE
+
+#####Record the information
+Using Google Chrome Dev tools. I recorded info and started tackling the JS file. 
+
 
 
 
@@ -30,14 +34,6 @@ Because of how everything seemed to be working utilizing .htaccess (file include
 
 To optimize views/pizza.html, you will need to modify views/js/main.js until your frames per second rate is 60 fps or higher. You will find instructive comments in main.js. 
 
-You might find the FPS Counter/HUD Display useful in Chrome developer tools described here: [Chrome Dev Tools tips-and-tricks](https://developer.chrome.com/devtools/docs/tips-and-tricks).
-
-
-
-
-
-* <a href="http://getbootstrap.com/css/">Bootstrap's CSS Classes</a>
-* <a href="http://getbootstrap.com/components/">Bootstrap's Components</a>
 
 ## Citations
 
