@@ -445,7 +445,7 @@ changeSliderLabel(size);
     //Removed the doc query selector all since that is again another same thing/constant in the site. 
     // I then replaced it with th evariable and just have style. 
     
-    var elem = document.querySelectorAll(".randomPizzaContainer");
+    var elem = document.getElementsByClassName("randomPizzaContainer");
     for (var i = 0; i < 100; i++) {
       elem[i].style.width = updateWidth;
     }
@@ -463,8 +463,13 @@ changeSliderLabel(size);
 window.performance.mark("mark_start_generating"); // collect timing data
 
 // This for-loop actually creates and appends all of the pizzas when the page loads
+// let's pull out the getelementbyid that is the same for everything and just have it be
+// pulled once and stored in a variable for future use. 
 var pizzasDiv = document.getElementById("randomPizzas");
   //make a local version of the call so you dont' gotta be looking
+  //read an article that suggested making a local version of a function would then help JS from 
+  //digging in and finding it each time in a for loop. 
+  // Doing this DID seem to help but I don't think i twas that much help
 var pzElemGen = pizzaElementGenerator;
 for (var i = 2; i < 100; i++) {
   pizzasDiv.appendChild(pzElemGen(i));
@@ -501,7 +506,8 @@ function updatePositions() {
   //so it makes sense to put it outside
   window.performance.mark("mark_start_frame");
   var scrollTop = document.body.scrollTop / 1250;
-  var items = document.querySelectorAll('.mover');
+  //queryselectorall is slower than getElementsByClassName
+  var items = document.getElementsByClassName('mover');
   var itemCount = items.length;
   //made itemCount and that seemed to helper just a hair more...which seems counter intuitive
   for (var i = 0; i < itemCount; i++) {
@@ -526,22 +532,24 @@ window.addEventListener('scroll', updatePositions);
 document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
-
+  var movingPizza = document.getElementById("movingPizzas1")
   for (var i = 0; i < 22; i++) {
     //Make these variables...maybe this will then make it easier to process??
     var top = Math.floor(i / cols) * s;
     var left = (i % cols) * s;
     var elem = document.createElement('img');
     elem.className = 'mover';
-    elem.src = "images/pizzamove.png";
     /*
-    put this in css
+    put image in as content:url(). it suggest it's bad practice but I"M guessing they mean develpoment vs production
+    elem.src = "images/pizzamove.png";
+    put this in css, 
     elem.style.height = "100px";
     elem.style.width = "73.333px";
     */
     elem.basicLeft = left;
     elem.style.top = top + 'px';
-    document.querySelector("#movingPizzas1").appendChild(elem);
+    //put a variable for appenting id
+    movingPizza.appendChild(elem);
   }
   updatePositions();
 });
