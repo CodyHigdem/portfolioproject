@@ -533,9 +533,12 @@ document.addEventListener('DOMContentLoaded', function() {
     var left = (i % cols) * s;
     var elem = document.createElement('img');
     elem.className = 'mover';
-    elem.src = "images/pizza.png";
+    elem.src = "images/pizzamove.png";
+    /*
+    put this in css
     elem.style.height = "100px";
     elem.style.width = "73.333px";
+    */
     elem.basicLeft = left;
     elem.style.top = top + 'px';
     document.querySelector("#movingPizzas1").appendChild(elem);

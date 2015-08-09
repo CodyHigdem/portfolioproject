@@ -36,6 +36,9 @@ form {
 .mover {
   position: fixed;
   z-index: -1;
+  height: 100px;
+  width: 73.333px;
+  content:url(http://qtheninja.github.io/portfolioproject/views/images/pizzamove.png);
   will-change: transform;
   transform: translatez(0);
 }
