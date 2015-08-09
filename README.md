@@ -37,7 +37,12 @@ If a function was firing inside a for loop I made a 'local' version if it just a
 
 I tried to pull out all of the get elemens concepts from the for loops. This was to let them compute it once and then let it be stored in a variable. In otherwords, console log your for loops and see what info stay consistent. Then make changes accordingly. 
 
+### How to Run the app
+Download the zip folder
+Unzip
+Click on index.html
 
+You can also visit: http://qtheninja.github.io/portfolioproject/ for a working demo
 
 ## Citations
 
