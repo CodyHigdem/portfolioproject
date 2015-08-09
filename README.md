@@ -21,18 +21,14 @@ Because of how everything seemed to be working utilizing .htaccess (file include
 
 #####Record the information
 Using Google Chrome Dev tools. I recorded info and started tackling the JS file. 
+I then tackled as many of the dom manipulation issues as possible. 
+Some of my attempts such as using async font loading caused major performance issues. 
+I console.logged all of the for loops and noted all info that was the 'same' I then made a variable that was stored outside of the for loop. 
 
+Any functions that had a forloop with a function...I made a local variable outsid eof the loop so that js/browser isn't searching for the original function. 
 
+I compressed the images prettyaggressively
 
-
-
-
-### Getting started ####
-
-
-####Part 2: Optimize Frames per Second in pizza.html
-
-To optimize views/pizza.html, you will need to modify views/js/main.js until your frames per second rate is 60 fps or higher. You will find instructive comments in main.js. 
 
 
 ## Citations
