@@ -38,5 +38,5 @@ To optimize views/pizza.html, you will need to modify views/js/main.js until you
 ## Citations
 
 https://www.addthis.com/blog/2014/11/04/pagespeed-insights-removing-render-blocking-css/#.VcZTz_lViko
-
+http://stackoverflow.com/questions/9262861/css-background-image-to-fit-width-height-should-auto-scale-in-proportion
 

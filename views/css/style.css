@@ -34,8 +34,7 @@ form {
   width: 73.333px;
   height: 100px;
   z-index: -1;
-  background:url(images/pizza.png) no-repeat;
-
+  content:url(http://qtheninja.github.io/portfolioproject/views/images/pizza.png);
 }
 
 .randomPizzaContainer {
