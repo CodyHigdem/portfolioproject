@@ -373,13 +373,17 @@ var pizzaElementGenerator = function(i) {
   pizzaDescriptionContainer = document.createElement("div");
 
   pizzaContainer.classList.add("randomPizzaContainer");
+  /*
+  //Let's put these into CSS style
   pizzaContainer.style.width = "33.33%";
   pizzaContainer.style.height = "325px";
+  */
   pizzaContainer.id = "pizza" + i;                // gives each pizza element a unique id
   pizzaImageContainer.classList.add("col-md-6");
 
-  pizzaImage.src = "images/pizza.png";
+  //pizzaImage.src = "images/pizza.png";
   pizzaImage.classList.add("img-responsive");
+  pizzaImage.classList.add("pie");
   pizzaImageContainer.appendChild(pizzaImage);
   pizzaContainer.appendChild(pizzaImageContainer);
 
@@ -394,6 +398,7 @@ var pizzaElementGenerator = function(i) {
   ul.innerHTML = makeRandomPizza();
   pizzaDescriptionContainer.appendChild(ul);
   pizzaContainer.appendChild(pizzaDescriptionContainer);
+
 
   return pizzaContainer;
 };
@@ -447,6 +452,7 @@ var resizePizzas = function(size) {
 
     return dx;
   }
+
  // Iterates through pizza elements on the page and changes their widths
    function changePizzaSizes(size) {
     /*let's pull out all of the document query selector stuff....use size given to us to do the calcs regardless */
@@ -454,8 +460,8 @@ var resizePizzas = function(size) {
     var dx = determineDx(document.querySelector(".randomPizzaContainer"), size);
     var updateWidth = (offSetWidth + dx) + 'px';
     //For loop just has this now...where we have to actally go in and change every iteration of the random pizza
-    for (var i = 0; i < document.querySelectorAll(".randomPizzaContainer").length; i++) {
-      document.querySelectorAll(".randomPizzaContainer")[i].style.width = updateWidth;
+    for (var i = 0; i < document.getElementsByClassName(".randomPizzaContainer").length; i++) {
+      document.getElementsByClassName(".randomPizzaContainer")[i].style.width = updateWidth;
     }
   }
 
@@ -472,11 +478,11 @@ window.performance.mark("mark_start_generating"); // collect timing data
 
 // This for-loop actually creates and appends all of the pizzas when the page loads
 var pizzasDiv = document.getElementById("randomPizzas");
-var pzElemGen = pizzaElementGenerator;
+//var pzElemGen = pizzaElementGenerator;
 for (var i = 2; i < 100; i++) {
   //make a local version of the call so you dont' gotta be looking
   
-  pizzasDiv.appendChild(pzElemGen(i));
+  pizzasDiv.appendChild(pizzaElementGenerator(i));
 }
 
 // User Timing API again. These measurements tell you how long it took to generate the initial pizzas
@@ -510,6 +516,7 @@ function updatePositions() {
   var scrollTop = document.body.scrollTop / 1250;
   var items = document.querySelectorAll('.mover');
   var itemCount = items.length;
+
   for (var i = 0; i < itemCount; i++) {
     var phase = Math.sin(scrollTop + (i % 5));
     items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
@@ -539,12 +546,9 @@ document.addEventListener('DOMContentLoaded', function() {
     var left = (i % cols) * s;
     var elem = document.createElement('img');
     elem.className = 'mover';
-    //elem.src = "images/pizza.png";
-    /* Let's put element class stuff in css
-
-
+    elem.src = "images/pizza.png";
     elem.style.height = "100px";
-    elem.style.width = "73.333px"; */ 
+    elem.style.width = "73.333px";
     elem.basicLeft = left;
     elem.style.top = top + 'px';
     document.querySelector("#movingPizzas1").appendChild(elem);

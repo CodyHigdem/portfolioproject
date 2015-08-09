@@ -31,15 +31,17 @@ form {
 
 .mover {
   position: fixed;
-  width: 73.333px;
-  height: 100px;
   z-index: -1;
-  content:url(http://qtheninja.github.io/portfolioproject/views/images/pizza.png);
+  will-change: transform;
+  transform: translatez(0);
 }
+
 
 .randomPizzaContainer {
   float: left;
   display: flex;
+  width: 33.33%;
+  height: 325px;
 }
 
 .randomPizzaContainer:after {
