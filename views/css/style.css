@@ -29,6 +29,10 @@ form {
   font-weight: 800;
 }
 
+.img-responsive {
+   will-change: transform;
+   transform: translateZ(0);
+}
 .mover {
   position: fixed;
   z-index: -1;

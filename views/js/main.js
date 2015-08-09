@@ -369,8 +369,10 @@ var pizzaElementGenerator = function(i) {
   pizzaDescriptionContainer = document.createElement("div");
 
   pizzaContainer.classList.add("randomPizzaContainer");
+  /*
   pizzaContainer.style.width = "33.33%";
   pizzaContainer.style.height = "325px";
+  */
   pizzaContainer.id = "pizza" + i;                // gives each pizza element a unique id
   pizzaImageContainer.classList.add("col-md-6");
 
@@ -417,43 +419,35 @@ var resizePizzas = function(size) {
 
 changeSliderLabel(size);
 
-  // Returns the size difference to change a pizza element from one size to another. Called by changePizzaSlices(size).
-  function determineDx (elem, size) {
-    var oldwidth = elem.offsetWidth;
-    var windowwidth = document.querySelector("#randomPizzas").offsetWidth;
-    var oldsize = oldwidth / windowwidth;
-
-    // TODO: change to 3 sizes? no more xl?
-    // Changes the slider value to a percent width
-    function sizeSwitcher (size) {
+  // TODO: change to 3 sizes? no more xl?
+  // Changes the slider value to a percent width
+  /*
+  I removed the DX function and replaced it with a simpler switch based on size. 
+  Since there is no point to be calculating DX when you can just assigned a Percentage of the screen via styles
+  */
+  function sizeSwitcher (size) {
       switch(size) {
         case "1":
-          return 0.25;
+          return "25%";
         case "2":
-          return 0.3333;
+          return "33.33%";
         case "3":
-          return 0.5;
+          return "50%";
         default:
           console.log("bug in sizeSwitcher");
       }
     }
-
-    var newsize = sizeSwitcher(size);
-    var dx = (newsize - oldsize) * windowwidth;
-
-    return dx;
-  }
-
  // Iterates through pizza elements on the page and changes their widths
    function changePizzaSizes(size) {
-    /*let's pull out all of the document query selector stuff....use size given to us to do the calcs regardless */
-    var offSetWidth = document.querySelector(".randomPizzaContainer").offsetWidth;
-    var dx = determineDx(document.querySelector(".randomPizzaContainer"), size);
-    var updateWidth = (offSetWidth + dx) + 'px';
-    var pizzaCount = document.querySelectorAll(".randomPizzaContainer").length
+    var updateWidth = sizeSwitcher(size);
+    //No point in calculating the number of pizzas when it's a 100
     //For loop just has this now...where we have to actally go in and change every iteration of the random pizza
-    for (var i = 0; i < pizzaCount; i++) {
-      document.querySelectorAll(".randomPizzaContainer")[i].style.width = updateWidth;
+    //Removed the doc query selector all since that is again another same thing/constant in the site. 
+    // I then replaced it with th evariable and just have style. 
+    
+    var elem = document.querySelectorAll(".randomPizzaContainer");
+    for (var i = 0; i < 100; i++) {
+      elem[i].style.width = updateWidth;
     }
   }
 
@@ -473,8 +467,6 @@ var pizzasDiv = document.getElementById("randomPizzas");
   //make a local version of the call so you dont' gotta be looking
 var pzElemGen = pizzaElementGenerator;
 for (var i = 2; i < 100; i++) {
-
-  
   pizzasDiv.appendChild(pzElemGen(i));
 }
 
