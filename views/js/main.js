@@ -1,16 +1,12 @@
 /*
 Welcome to the 60fps project! Your goal is to make Cam's Pizzeria website run
 jank-free at 60 frames per second.
-
 There are two major issues in this code that lead to sub-60fps performance. Can
 you spot and fix both?
-
-
 Built into the code, you'll find a few instances of the User Timing API
 (window.performance), which will be console.log()ing frame rate data into the
 browser console. To learn more about User Timing API, check out:
 http://www.html5rocks.com/en/tutorials/webperformance/usertiming/
-
 Creator:
 Cameron Pittman, Udacity Course Developer
 cameron *at* udacity *dot* com
@@ -373,17 +369,13 @@ var pizzaElementGenerator = function(i) {
   pizzaDescriptionContainer = document.createElement("div");
 
   pizzaContainer.classList.add("randomPizzaContainer");
-  /*
-  //Let's put these into CSS style
   pizzaContainer.style.width = "33.33%";
   pizzaContainer.style.height = "325px";
-  */
   pizzaContainer.id = "pizza" + i;                // gives each pizza element a unique id
   pizzaImageContainer.classList.add("col-md-6");
 
-  //pizzaImage.src = "images/pizza.png";
+  pizzaImage.src = "images/pizza.png";
   pizzaImage.classList.add("img-responsive");
-  pizzaImage.classList.add("pie");
   pizzaImageContainer.appendChild(pizzaImage);
   pizzaContainer.appendChild(pizzaImageContainer);
 
@@ -398,7 +390,6 @@ var pizzaElementGenerator = function(i) {
   ul.innerHTML = makeRandomPizza();
   pizzaDescriptionContainer.appendChild(ul);
   pizzaContainer.appendChild(pizzaDescriptionContainer);
-
 
   return pizzaContainer;
 };
@@ -424,7 +415,7 @@ var resizePizzas = function(size) {
     }
   }
 
-  changeSliderLabel(size);
+changeSliderLabel(size);
 
   // Returns the size difference to change a pizza element from one size to another. Called by changePizzaSlices(size).
   function determineDx (elem, size) {
@@ -459,9 +450,10 @@ var resizePizzas = function(size) {
     var offSetWidth = document.querySelector(".randomPizzaContainer").offsetWidth;
     var dx = determineDx(document.querySelector(".randomPizzaContainer"), size);
     var updateWidth = (offSetWidth + dx) + 'px';
+    var pizzaCount = document.querySelectorAll(".randomPizzaContainer").length
     //For loop just has this now...where we have to actally go in and change every iteration of the random pizza
-    for (var i = 0; i < document.getElementsByClassName(".randomPizzaContainer").length; i++) {
-      document.getElementsByClassName(".randomPizzaContainer")[i].style.width = updateWidth;
+    for (var i = 0; i < pizzaCount; i++) {
+      document.querySelectorAll(".randomPizzaContainer")[i].style.width = updateWidth;
     }
   }
 
@@ -511,12 +503,14 @@ function logAverageFrame(times) {   // times is the array of User Timing measure
 // Moves the sliding background pizzas based on scroll position
 function updatePositions() {
   frame++;
-
+  //I took out as much as I could on the for loop. 
+  // each time the for loop was being run they were pulling this info too. All of this stays the same
+  //so it makes sense to put it outside
   window.performance.mark("mark_start_frame");
   var scrollTop = document.body.scrollTop / 1250;
   var items = document.querySelectorAll('.mover');
   var itemCount = items.length;
-
+  //made itemCount and that seemed to helper just a hair more...which seems counter intuitive
   for (var i = 0; i < itemCount; i++) {
     var phase = Math.sin(scrollTop + (i % 5));
     items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
@@ -540,7 +534,7 @@ document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
 
-  for (var i = 0; i < 20; i++) {
+  for (var i = 0; i < 22; i++) {
     //Make these variables...maybe this will then make it easier to process??
     var top = Math.floor(i / cols) * s;
     var left = (i % cols) * s;
