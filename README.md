@@ -35,4 +35,4 @@ I compressed the images prettyaggressively
 
 https://www.addthis.com/blog/2014/11/04/pagespeed-insights-removing-render-blocking-css/#.VcZTz_lViko
 http://stackoverflow.com/questions/9262861/css-background-image-to-fit-width-height-should-auto-scale-in-proportion
-
+http://stackoverflow.com/questions/14377590/queryselector-and-queryselectorall-vs-getelementsbyclassname-and-getelementbyid

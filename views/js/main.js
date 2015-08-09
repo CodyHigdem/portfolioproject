@@ -402,13 +402,13 @@ var resizePizzas = function(size) {
   function changeSliderLabel(size) {
     switch(size) {
       case "1":
-        document.querySelector("#pizzaSize").innerHTML = "Small";
+        document.getElementById("pizzaSize").innerHTML = "Small";
         return;
       case "2":
-        document.querySelector("#pizzaSize").innerHTML = "Medium";
+        document.getElementById("pizzaSize").innerHTML = "Medium";
         return;
       case "3":
-        document.querySelector("#pizzaSize").innerHTML = "Large";
+        document.getElementById("pizzaSize").innerHTML = "Large";
         return;
       default:
         console.log("bug in changeSliderLabel");
@@ -470,11 +470,12 @@ window.performance.mark("mark_start_generating"); // collect timing data
 
 // This for-loop actually creates and appends all of the pizzas when the page loads
 var pizzasDiv = document.getElementById("randomPizzas");
-//var pzElemGen = pizzaElementGenerator;
-for (var i = 2; i < 100; i++) {
   //make a local version of the call so you dont' gotta be looking
+var pzElemGen = pizzaElementGenerator;
+for (var i = 2; i < 100; i++) {
+
   
-  pizzasDiv.appendChild(pizzaElementGenerator(i));
+  pizzasDiv.appendChild(pzElemGen(i));
 }
 
 // User Timing API again. These measurements tell you how long it took to generate the initial pizzas
