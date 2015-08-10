@@ -505,13 +505,16 @@ function updatePositions() {
   // each time the for loop was being run they were pulling this info too. All of this stays the same
   //so it makes sense to put it outside
   window.performance.mark("mark_start_frame");
+  //declare this outside of the loop and it's created once as opposed tobeing created EVERY TIME in the loop. 
+  //In the loop we can assign it a value
+  var phase; 
   var scrollTop = document.body.scrollTop / 1250;
   //queryselectorall is slower than getElementsByClassName
   var items = document.getElementsByClassName('mover');
   var itemCount = items.length;
   //made itemCount and that seemed to helper just a hair more...which seems counter intuitive
   for (var i = 0; i < itemCount; i++) {
-    var phase = Math.sin(scrollTop + (i % 5));
+    phase = Math.sin(scrollTop + (i % 5));
     items[i].style.left = items[i].basicLeft + 100 * phase + 'px';
   }
 
@@ -532,12 +535,15 @@ window.addEventListener('scroll', updatePositions);
 document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
-  var movingPizza = document.getElementById("movingPizzas1")
-  for (var i = 0; i < 22; i++) {
+  //This is the height of the 
+  var row = window.screen.height/s;
+  var pizzaRows = row * cols;
+  var movingPizza = document.getElementById("movingPizzas1");
+  //By putting this outside of the for loop it should help with performance
+  var elem;
+  for (var i = 0; i < pizzaRows; i++) {
     //Make these variables...maybe this will then make it easier to process??
-    var top = Math.floor(i / cols) * s;
-    var left = (i % cols) * s;
-    var elem = document.createElement('img');
+    elem = document.createElement('img');
     elem.className = 'mover';
     /*
     put image in as content:url(). it suggest it's bad practice but I"M guessing they mean develpoment vs production
@@ -546,9 +552,9 @@ document.addEventListener('DOMContentLoaded', function() {
     elem.style.height = "100px";
     elem.style.width = "73.333px";
     */
-    elem.basicLeft = left;
-    elem.style.top = top + 'px';
-    //put a variable for appenting id
+    elem.basicLeft = (i % cols) * s;
+    elem.style.top = Math.floor(i / cols) * s + 'px';
+    //put a variable for appending id
     movingPizza.appendChild(elem);
   }
   updatePositions();

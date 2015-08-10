@@ -40,7 +40,7 @@ form {
   width: 73.333px;
   content:url(http://qtheninja.github.io/portfolioproject/views/images/pizzamove.png);
   will-change: transform;
-  transform: translatez(0);
+  transform: translateZ(0);
 }
 
 
